@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MerryGift — Interactive Christmas Gift Finder</title>
+    <meta name="description" content="Discover the perfect Christmas gifts for your loved ones with our interactive glassmorphic gift finder tool. Custom suggestions based on interests, budget, and relationship.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <!-- Snowflake background container -->
+    <div class="snowflake-container" id="snowflake-container"></div>
+    <div class="glow-bg glow-festive-red"></div>
+    <div class="glow-bg glow-festive-green"></div>
+
+    <div class="app-layout">
+        <!-- Main Header -->
+        <header class="main-header">
+            <div class="logo">
+                <span class="logo-emoji">🎁</span>
+                <span class="logo-text">MERRY<span class="logo-highlight">GIFT</span></span>
+            </div>
+            <div class="wishlist-btn-wrapper">
+                <button class="btn-wishlist" id="btn-toggle-wishlist" aria-label="Toggle Wishlist">
+                    Wishlist (<span id="wishlist-count">0</span>)
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Body Grid -->
+        <div class="main-grid">
+            <main class="content-area">
+                <!-- Hero Section -->
+                <section class="hero-section">
+                    <h1 class="hero-title" id="main-heading">Find the Perfect Gift <br><span class="gradient-text">for Your Loved Ones</span></h1>
+                    <p class="hero-subtitle">Answer 4 quick questions and our interactive finder will recommend personalized, thoughtful Christmas gifts suited for their personality and your budget.</p>
+                </section>
+
+                <!-- Glassmorphic Advisor Wizard Card -->
+                <section class="wizard-container" id="gift-wizard-card">
+                    <div class="glass-card" id="wizard-card-inner">
+                        <!-- Progress Header -->
+                        <div class="wizard-progress">
+                            <div class="progress-bar-track">
+                                <div class="progress-bar-fill" id="progress-indicator"></div>
+                            </div>
+                            <span class="progress-step-text" id="step-counter">Step 1 of 4</span>
+                        </div>
+
+                        <!-- Step Content Panels -->
+                        <div class="steps-wrapper">
+                            <!-- Step 1: Recipient -->
+                            <div class="step-panel active" id="step-1">
+                                <h2 class="step-question">Who are you buying a gift for?</h2>
+                                <div class="options-grid">
+                                    <button class="option-btn" data-category="recipient" data-val="partner">
+                                        <span class="option-icon">❤️</span> Partner / Spouse
+                                    </button>
+                                    <button class="option-btn" data-category="recipient" data-val="parent">
+                                        <span class="option-icon">🏡</span> Parent / Elder
+                                    </button>
+                                    <button class="option-btn" data-category="recipient" data-val="child">
+                                        <span class="option-icon">🧸</span> Child / Youth
+                                    </button>
+                                    <button class="option-btn" data-category="recipient" data-val="friend">
+                                        <span class="option-icon">☕</span> Best Friend
+                                    </button>
+                                    <button class="option-btn" data-category="recipient" data-val="colleague">
+                                        <span class="option-icon">💼</span> Colleague / Boss
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Step 2: Interests -->
+                            <div class="step-panel" id="step-2">
+                                <h2 class="step-question">What is their main interest?</h2>
+                                <div class="options-grid">
+                                    <button class="option-btn" data-category="interest" data-val="tech">
+                                        <span class="option-icon">🎮</span> Tech & Gaming
+                                    </button>
+                                    <button class="option-btn" data-category="interest" data-val="books">
+                                        <span class="option-icon">📚</span> Books & Reading
+                                    </button>
+                                    <button class="option-btn" data-category="interest" data-val="fashion">
+                                        <span class="option-icon">🧥</span> Fashion & Style
+                                    </button>
+                                    <button class="option-btn" data-category="interest" data-val="cooking">
+                                        <span class="option-icon">🍳</span> Cooking & Culinary
+                                    </button>
+                                    <button class="option-btn" data-category="interest" data-val="outdoor">
+                                        <span class="option-icon">🥾</span> Outdoors & Sports
+                                    </button>
+                                    <button class="option-btn" data-category="interest" data-val="wellness">
+                                        <span class="option-icon">🧘</span> Wellness & Self-care
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Step 3: Tone -->
+                            <div class="step-panel" id="step-3">
+                                <h2 class="step-question">What tone best describes the relationship?</h2>
+                                <div class="options-grid">
+                                    <button class="option-btn" data-category="tone" data-val="heartfelt">
+                                        <span class="option-icon">✨</span> Heartfelt & Sentimental
+                                    </button>
+                                    <button class="option-btn" data-category="tone" data-val="practical">
+                                        <span class="option-icon">🛠️</span> Practical & Useful
+                                    </button>
+                                    <button class="option-btn" data-category="tone" data-val="funny">
+                                        <span class="option-icon">🃏</span> Funny & Playful
+                                    </button>
+                                    <button class="option-btn" data-category="tone" data-val="luxury">
+                                        <span class="option-icon">💎</span> Luxury & Indulgent
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Step 4: Budget -->
+                            <div class="step-panel" id="step-4">
+                                <h2 class="step-question">What is your budget range?</h2>
+                                <div class="options-grid">
+                                    <button class="option-btn" data-category="budget" data-val="budget">
+                                        <span class="option-icon">💵</span> Under $25 (Budget Friendly)
+                                    </button>
+                                    <button class="option-btn" data-category="budget" data-val="moderate">
+                                        <span class="option-icon">💳</span> $25 - $75 (Moderate)
+                                    </button>
+                                    <button class="option-btn" data-category="budget" data-val="premium">
+                                        <span class="option-icon">💰</span> $75 - $150 (Premium)
+                                    </button>
+                                    <button class="option-btn" data-category="budget" data-val="luxury">
+                                        <span class="option-icon">👑</span> $150+ (Splurge / High-end)
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Wizard Navigation -->
+                        <div class="wizard-nav">
+                            <button class="btn-nav btn-back" id="btn-wizard-back" disabled>Back</button>
+                            <span class="nav-hint">Select an option to advance</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Recommendations Section -->
+                <section class="results-section hidden" id="recommendations-view">
+                    <div class="results-header">
+                        <h2>Curated <span class="gradient-text">Gift Recommendations</span></h2>
+                        <p>Based on your selections, we think they will love these thoughtful items.</p>
+                    </div>
+
+                    <div class="results-grid" id="recommendations-grid">
+                        <!-- Recommendation Cards populated dynamically -->
+                    </div>
+
+                    <div class="results-actions">
+                        <button class="btn-primary" id="btn-restart-wizard">Start Over</button>
+                    </div>
+                </section>
+            </main>
+
+            <!-- Sidebar Wishlist -->
+            <aside class="wishlist-sidebar" id="wishlist-drawer">
+                <div class="wishlist-header">
+                    <h3>My Saved Wishlist 🎄</h3>
+                    <button class="btn-close-wishlist" id="btn-close-wishlist" aria-label="Close Wishlist">&times;</button>
+                </div>
+                <div class="wishlist-items-container" id="wishlist-items">
+                    <p class="empty-message" id="wishlist-empty-msg">Your saved wishlist is currently empty. Save items from the recommendations to view them here.</p>
+                </div>
+                <div class="wishlist-actions hidden" id="wishlist-actions-panel">
+                    <button class="btn-primary btn-block" id="btn-print-wishlist">Print Wishlist</button>
+                    <button class="btn-secondary btn-block" id="btn-share-wishlist">Copy Wishlist Link</button>
+                </div>
+            </aside>
+        </div>
+
+        <!-- Main Footer -->
+        <footer class="main-footer">
+            <p>&copy; 2026 MerryGift Finder. Helping spread holiday joy thoughtfully.</p>
+            <p class="footer-subtext">All recommendations are curated independently. Links point to public marketplaces for shopping convenience.</p>
+        </footer>
+    </div>
+
+    <!-- Script Entry -->
+    <script src="app.js"></script>
+</body>
+</html>
