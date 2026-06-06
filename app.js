@@ -334,7 +334,7 @@ function setupEventListeners() {
     // Share Wishlist
     btnShareWishlist.addEventListener('click', () => {
         const wishlistNames = savedWishlist.map(item => `${item.name} (${item.price})`).join('\n');
-        const shareText = `Check out my Wishlist generated on GiftSpire:\n\n${wishlistNames}\n\nPlan yours at https://christmasgiftadvisor.vercel.app`;
+        const shareText = `Check out my Wishlist generated on PresentPerfect:\n\n${wishlistNames}\n\nPlan yours at https://christmasgiftadvisor.vercel.app`;
         
         navigator.clipboard.writeText(shareText).then(() => {
             const oldText = btnShareWishlist.textContent;
