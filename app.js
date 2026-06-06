@@ -561,13 +561,13 @@ function restartWizard() {
     
     recommendationsView.classList.add('hidden');
     wizardCard.classList.remove('hidden');
-    document.getElementById('main-heading').parentElement.classList.remove('hidden');
+    document.querySelector('.hero-section').classList.remove('hidden');
 }
 
 // --- Recommendations Generation ---
 function generateRecommendations() {
     wizardCard.classList.add('hidden');
-    document.getElementById('main-heading').parentElement.classList.add('hidden');
+    document.querySelector('.hero-section').classList.add('hidden');
     recommendationsView.classList.remove('hidden');
     
     const matchedGifts = giftDatabase.filter(gift => {
