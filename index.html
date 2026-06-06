@@ -3,57 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PresentPerfect — Premium Interactive Gift Finder</title>
-    <meta name="description" content="Find the perfect gift for birthdays, anniversaries, holidays, and celebrations. PresentPerfect recommends custom, thoughtful gifts matching your budget and relationship.">
+    <title>PresentPerfect — Premium Gifting Hub & Budget Tracker</title>
+    <meta name="description" content="An elegant personal assistant to recommend curated gifts and track holiday, birthday, or anniversary budgets, purchases, and statuses.">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,700;0,800;1,500&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    <!-- Sparkling light particles container -->
-    <div class="particles-container" id="particles-container"></div>
-    <div class="glow-bg glow-primary"></div>
-    <div class="glow-bg glow-secondary"></div>
-
     <div class="app-layout">
         <!-- Main Header -->
         <header class="main-header">
             <div class="logo">
-                <span class="logo-emoji">✨</span>
+                <span class="logo-emoji">✦</span>
                 <span class="logo-text">PRESENT<span class="logo-highlight">PERFECT</span></span>
             </div>
-            <div class="wishlist-btn-wrapper">
+            
+            <!-- Dashboard Tab Navigations -->
+            <nav class="tab-navigation">
+                <button class="nav-tab active" id="tab-btn-finder" data-target="section-finder">Gift Finder</button>
+                <button class="nav-tab" id="tab-btn-tracker" data-target="section-tracker">Gifting Tracker</button>
+            </nav>
+
+            <div class="header-actions">
                 <button class="btn-wishlist" id="btn-toggle-wishlist" aria-label="Toggle Wishlist">
                     Wishlist (<span id="wishlist-count">0</span>)
                 </button>
             </div>
         </header>
 
-        <!-- Main Body Grid -->
-        <div class="main-grid">
-            <main class="content-area">
-                <!-- Hero Section -->
-                <section class="hero-section">
-                    <h1 class="hero-title" id="main-heading">Find the Perfect Gift <br><span class="gradient-text">for Any Occasion</span></h1>
-                    <p class="hero-subtitle">Whether it's a birthday, anniversary, holiday, or simple thank you, answer 5 quick questions and PresentPerfect will recommend thoughtfully curated gift ideas.</p>
-                </section>
+        <!-- Main Content Area -->
+        <div class="main-container">
+            <!-- SECTION 1: GIFT FINDER -->
+            <section class="tab-section active" id="section-finder">
+                <div class="hero-section">
+                    <h1 class="hero-title">Discover the <br><span class="serif-italic">Perfect Gift</span></h1>
+                    <p class="hero-subtitle">Answer 6 questions and our curated database will match items with multiple shopping links.</p>
+                </div>
 
-                <!-- Glassmorphic Advisor Wizard Card -->
-                <section class="wizard-container" id="gift-wizard-card">
+                <!-- Wizard Container -->
+                <div class="wizard-container" id="gift-wizard-card">
                     <div class="glass-card" id="wizard-card-inner">
-                        <!-- Progress Header -->
                         <div class="wizard-progress">
                             <div class="progress-bar-track">
                                 <div class="progress-bar-fill" id="progress-indicator"></div>
                             </div>
-                            <span class="progress-step-text" id="step-counter">Step 1 of 5</span>
+                            <span class="progress-step-text" id="step-counter">Step 1 of 6</span>
                         </div>
 
-                        <!-- Step Content Panels -->
+                        <!-- Wizard Panels -->
                         <div class="steps-wrapper">
                             <!-- Step 1: Recipient -->
                             <div class="step-panel active" id="step-1">
@@ -77,8 +78,24 @@
                                 </div>
                             </div>
 
-                            <!-- Step 2: Occasion -->
+                            <!-- Step 2: Gender / Preferences -->
                             <div class="step-panel" id="step-2">
+                                <h2 class="step-question">Do you prefer gifts targeted for a specific gender?</h2>
+                                <div class="options-grid">
+                                    <button class="option-btn" data-category="gender" data-val="male">
+                                        <span class="option-icon">👔</span> Gifts for Men
+                                    </button>
+                                    <button class="option-btn" data-category="gender" data-val="female">
+                                        <span class="option-icon">👗</span> Gifts for Women
+                                    </button>
+                                    <button class="option-btn" data-category="gender" data-val="unisex">
+                                        <span class="option-icon">🤝</span> Neutral / Unisex Gifts
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Step 3: Occasion -->
+                            <div class="step-panel" id="step-3">
                                 <h2 class="step-question">What is the celebration or occasion?</h2>
                                 <div class="options-grid">
                                     <button class="option-btn" data-category="occasion" data-val="birthday">
@@ -102,8 +119,8 @@
                                 </div>
                             </div>
 
-                            <!-- Step 3: Interests -->
-                            <div class="step-panel" id="step-3">
+                            <!-- Step 4: Interests -->
+                            <div class="step-panel" id="step-4">
                                 <h2 class="step-question">What is their main interest?</h2>
                                 <div class="options-grid">
                                     <button class="option-btn" data-category="interest" data-val="tech">
@@ -127,8 +144,8 @@
                                 </div>
                             </div>
 
-                            <!-- Step 4: Tone -->
-                            <div class="step-panel" id="step-4">
+                            <!-- Step 5: Tone -->
+                            <div class="step-panel" id="step-5">
                                 <h2 class="step-question">What tone best describes the relationship?</h2>
                                 <div class="options-grid">
                                     <button class="option-btn" data-category="tone" data-val="heartfelt">
@@ -146,8 +163,8 @@
                                 </div>
                             </div>
 
-                            <!-- Step 5: Budget -->
-                            <div class="step-panel" id="step-5">
+                            <!-- Step 6: Budget -->
+                            <div class="step-panel" id="step-6">
                                 <h2 class="step-question">What is your budget range?</h2>
                                 <div class="options-grid">
                                     <button class="option-btn" data-category="budget" data-val="budget">
@@ -166,51 +183,166 @@
                             </div>
                         </div>
 
-                        <!-- Wizard Navigation -->
+                        <!-- Navigation -->
                         <div class="wizard-nav">
                             <button class="btn-nav btn-back" id="btn-wizard-back" disabled>Back</button>
                             <span class="nav-hint">Select an option to advance</span>
                         </div>
                     </div>
-                </section>
+                </div>
 
-                <!-- Recommendations Section -->
-                <section class="results-section hidden" id="recommendations-view">
+                <!-- Recommendations Result Grid -->
+                <div class="results-section hidden" id="recommendations-view">
                     <div class="results-header">
-                        <h2>Curated <span class="gradient-text">Gift Recommendations</span></h2>
-                        <p>Based on your selections, we think they will love these thoughtful items.</p>
+                        <h2>Curated Suggestions</h2>
+                        <p>Click "Track" to save your selection directly into your Gifting campaign.</p>
                     </div>
-
-                    <div class="results-grid" id="recommendations-grid">
-                        <!-- Recommendation Cards populated dynamically -->
-                    </div>
-
+                    <div class="results-grid" id="recommendations-grid"></div>
                     <div class="results-actions">
                         <button class="btn-primary" id="btn-restart-wizard">Start Over</button>
                     </div>
-                </section>
-            </main>
+                </div>
+            </section>
 
-            <!-- Sidebar Wishlist -->
-            <aside class="wishlist-sidebar" id="wishlist-drawer">
-                <div class="wishlist-header">
-                    <h3>Saved Wishlist ✨</h3>
-                    <button class="btn-close-wishlist" id="btn-close-wishlist" aria-label="Close Wishlist">&times;</button>
+            <!-- SECTION 2: GIFTING TRACKER DASHBOARD -->
+            <section class="tab-section" id="section-tracker">
+                <div class="tracker-hero">
+                    <h2>Gifting Campaign Dashboard</h2>
+                    <p>Log your purchases, track statuses, and monitor your total spending campaign.</p>
                 </div>
-                <div class="wishlist-items-container" id="wishlist-items">
-                    <p class="empty-message" id="wishlist-empty-msg">Your saved wishlist is currently empty. Save items from the recommendations to view them here.</p>
+
+                <!-- Budget Overview Cards -->
+                <div class="budget-dashboard">
+                    <div class="budget-card">
+                        <span class="card-label">Campaign Budget</span>
+                        <div class="budget-amount-wrapper">
+                            <span class="currency-symbol">$</span>
+                            <input type="number" id="input-campaign-budget" value="1000" min="0" class="budget-input">
+                        </div>
+                    </div>
+                    <div class="budget-card">
+                        <span class="card-label">Total Spent</span>
+                        <span class="card-value" id="tracker-total-spent">$0.00</span>
+                    </div>
+                    <div class="budget-card">
+                        <span class="card-label">Remaining Budget</span>
+                        <span class="card-value" id="tracker-remaining-budget">$1,000.00</span>
+                    </div>
+                    <div class="budget-card">
+                        <span class="card-label">Wrapped & Ready</span>
+                        <span class="card-value" id="tracker-wrapped-count">0 / 0 Items</span>
+                    </div>
                 </div>
-                <div class="wishlist-actions hidden" id="wishlist-actions-panel">
-                    <button class="btn-primary btn-block" id="btn-print-wishlist">Print Wishlist</button>
-                    <button class="btn-secondary btn-block" id="btn-share-wishlist">Copy Wishlist Link</button>
+
+                <!-- Actions and Table -->
+                <div class="tracker-controls">
+                    <h3>Gifts & Purchase Logs</h3>
+                    <div class="tracker-buttons">
+                        <button class="btn-secondary" id="btn-open-add-tracker">Add Custom Gift</button>
+                        <button class="btn-primary" id="btn-export-csv">Export to CSV</button>
+                    </div>
                 </div>
-            </aside>
+
+                <div class="table-container">
+                    <table class="tracker-table" id="tracker-table-el">
+                        <thead>
+                            <tr>
+                                <th>Recipient</th>
+                                <th>Occasion</th>
+                                <th>Gift Item</th>
+                                <th>Price Paid</th>
+                                <th>Purchased At</th>
+                                <th>Status</th>
+                                <th style="text-align: right;">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tracker-table-body">
+                            <!-- Populated dynamically via JS -->
+                        </tbody>
+                    </table>
+                    <div class="empty-state-message" id="tracker-empty-state">
+                        <p>No logged gifts found. Use the Finder or click "Add Custom Gift" above to log your first item.</p>
+                    </div>
+                </div>
+            </section>
         </div>
+
+        <!-- Sidebar Wishlist -->
+        <aside class="wishlist-sidebar" id="wishlist-drawer">
+            <div class="wishlist-header">
+                <h3>Saved Wishlist</h3>
+                <button class="btn-close-wishlist" id="btn-close-wishlist" aria-label="Close Wishlist">&times;</button>
+            </div>
+            <div class="wishlist-items-container" id="wishlist-items">
+                <p class="empty-message" id="wishlist-empty-msg">No saved wishlist items. Add items from the suggestions.</p>
+            </div>
+            <div class="wishlist-actions hidden" id="wishlist-actions-panel">
+                <button class="btn-primary btn-block" id="btn-print-wishlist">Print Wishlist</button>
+                <button class="btn-secondary btn-block" id="btn-share-wishlist">Copy Wishlist Link</button>
+            </div>
+        </aside>
+
+        <!-- Add Custom Gift Tracker Modal Popup -->
+        <div class="modal-overlay hidden" id="modal-add-tracker">
+            <div class="modal-card">
+                <div class="modal-header">
+                    <h3>Log Gift Purchase</h3>
+                    <button class="btn-close-modal" id="btn-close-tracker-modal">&times;</button>
+                </div>
+                <form id="tracker-manual-form" class="modal-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="track-recipient-name">Recipient Name</label>
+                            <input type="text" id="track-recipient-name" placeholder="John Doe" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="track-occasion">Occasion</label>
+                            <select id="track-occasion">
+                                <option value="Birthday">Birthday</option>
+                                <option value="Anniversary">Anniversary</option>
+                                <option value="Holiday">Christmas / Holiday</option>
+                                <option value="Graduation">Graduation</option>
+                                <option value="Housewarming">Housewarming</option>
+                                <option value="Other">Other / Thank You</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="track-gift-title">Gift Name</label>
+                            <input type="text" id="track-gift-title" placeholder="Retro Game Console" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="track-price">Price Paid ($)</label>
+                            <input type="number" id="track-price" step="0.01" min="0" placeholder="45.00" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="track-seller">Purchased From (Seller)</label>
+                            <input type="text" id="track-seller" placeholder="Amazon, Etsy, local, etc." value="Amazon">
+                        </div>
+                        <div class="form-group">
+                            <label for="track-status">Status</label>
+                            <select id="track-status">
+                                <option value="Planned">Planned</option>
+                                <option value="Ordered">Ordered / Shipped</option>
+                                <option value="Wrapped">Wrapped & Ready</option>
+                                <option value="Delivered">Delivered</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-primary btn-block">Log to Dashboard</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Notification toast -->
+        <div class="toast-notification hidden" id="toast-el">Item saved successfully!</div>
 
         <!-- Main Footer -->
         <footer class="main-footer">
-            <p>&copy; 2026 PresentPerfect Finder. Discovering thoughtful gifts for every celebration.</p>
-            <p class="footer-subtext">All recommendations are curated independently. Links point to public marketplaces for shopping convenience.</p>
+            <p>&copy; 2026 PresentPerfect. Premium Gift Finder & Campaign Dashboard.</p>
         </footer>
     </div>
 
