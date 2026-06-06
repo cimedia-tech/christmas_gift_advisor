@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MerryGift — Interactive Christmas Gift Finder</title>
-    <meta name="description" content="Discover the perfect Christmas gifts for your loved ones with our interactive glassmorphic gift finder tool. Custom suggestions based on interests, budget, and relationship.">
+    <title>GiftSpire — Premium Interactive Gift Finder</title>
+    <meta name="description" content="Find the perfect gift for birthdays, anniversaries, holidays, and celebrations. Get customized recommendations based on occasion, interests, and budget.">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,17 +14,17 @@
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    <!-- Snowflake background container -->
-    <div class="snowflake-container" id="snowflake-container"></div>
-    <div class="glow-bg glow-festive-red"></div>
-    <div class="glow-bg glow-festive-green"></div>
+    <!-- Sparkling light particles container -->
+    <div class="particles-container" id="particles-container"></div>
+    <div class="glow-bg glow-primary"></div>
+    <div class="glow-bg glow-secondary"></div>
 
     <div class="app-layout">
         <!-- Main Header -->
         <header class="main-header">
             <div class="logo">
-                <span class="logo-emoji">🎁</span>
-                <span class="logo-text">MERRY<span class="logo-highlight">GIFT</span></span>
+                <span class="logo-emoji">✨</span>
+                <span class="logo-text">GIFT<span class="logo-highlight">SPIRE</span></span>
             </div>
             <div class="wishlist-btn-wrapper">
                 <button class="btn-wishlist" id="btn-toggle-wishlist" aria-label="Toggle Wishlist">
@@ -38,8 +38,8 @@
             <main class="content-area">
                 <!-- Hero Section -->
                 <section class="hero-section">
-                    <h1 class="hero-title" id="main-heading">Find the Perfect Gift <br><span class="gradient-text">for Your Loved Ones</span></h1>
-                    <p class="hero-subtitle">Answer 4 quick questions and our interactive finder will recommend personalized, thoughtful Christmas gifts suited for their personality and your budget.</p>
+                    <h1 class="hero-title" id="main-heading">Find the Perfect Gift <br><span class="gradient-text">for Any Occasion</span></h1>
+                    <p class="hero-subtitle">Whether it's a birthday, anniversary, holiday, or simple thank you, answer 5 quick questions to discover thoughtfully curated gift ideas.</p>
                 </section>
 
                 <!-- Glassmorphic Advisor Wizard Card -->
@@ -50,14 +50,14 @@
                             <div class="progress-bar-track">
                                 <div class="progress-bar-fill" id="progress-indicator"></div>
                             </div>
-                            <span class="progress-step-text" id="step-counter">Step 1 of 4</span>
+                            <span class="progress-step-text" id="step-counter">Step 1 of 5</span>
                         </div>
 
                         <!-- Step Content Panels -->
                         <div class="steps-wrapper">
                             <!-- Step 1: Recipient -->
                             <div class="step-panel active" id="step-1">
-                                <h2 class="step-question">Who are you buying a gift for?</h2>
+                                <h2 class="step-question">Who is this gift for?</h2>
                                 <div class="options-grid">
                                     <button class="option-btn" data-category="recipient" data-val="partner">
                                         <span class="option-icon">❤️</span> Partner / Spouse
@@ -77,8 +77,33 @@
                                 </div>
                             </div>
 
-                            <!-- Step 2: Interests -->
+                            <!-- Step 2: Occasion -->
                             <div class="step-panel" id="step-2">
+                                <h2 class="step-question">What is the celebration or occasion?</h2>
+                                <div class="options-grid">
+                                    <button class="option-btn" data-category="occasion" data-val="birthday">
+                                        <span class="option-icon">🎂</span> Birthday
+                                    </button>
+                                    <button class="option-btn" data-category="occasion" data-val="anniversary">
+                                        <span class="option-icon">🥂</span> Anniversary / Wedding
+                                    </button>
+                                    <button class="option-btn" data-category="occasion" data-val="holiday">
+                                        <span class="option-icon">🎄</span> Christmas / Holidays
+                                    </button>
+                                    <button class="option-btn" data-category="occasion" data-val="graduation">
+                                        <span class="option-icon">🎓</span> Graduation / Milestone
+                                    </button>
+                                    <button class="option-btn" data-category="occasion" data-val="housewarming">
+                                        <span class="option-icon">🔑</span> Housewarming
+                                    </button>
+                                    <button class="option-btn" data-category="occasion" data-val="generic">
+                                        <span class="option-icon">🎈</span> Just Because / Thank You
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Step 3: Interests -->
+                            <div class="step-panel" id="step-3">
                                 <h2 class="step-question">What is their main interest?</h2>
                                 <div class="options-grid">
                                     <button class="option-btn" data-category="interest" data-val="tech">
@@ -102,8 +127,8 @@
                                 </div>
                             </div>
 
-                            <!-- Step 3: Tone -->
-                            <div class="step-panel" id="step-3">
+                            <!-- Step 4: Tone -->
+                            <div class="step-panel" id="step-4">
                                 <h2 class="step-question">What tone best describes the relationship?</h2>
                                 <div class="options-grid">
                                     <button class="option-btn" data-category="tone" data-val="heartfelt">
@@ -121,8 +146,8 @@
                                 </div>
                             </div>
 
-                            <!-- Step 4: Budget -->
-                            <div class="step-panel" id="step-4">
+                            <!-- Step 5: Budget -->
+                            <div class="step-panel" id="step-5">
                                 <h2 class="step-question">What is your budget range?</h2>
                                 <div class="options-grid">
                                     <button class="option-btn" data-category="budget" data-val="budget">
@@ -169,7 +194,7 @@
             <!-- Sidebar Wishlist -->
             <aside class="wishlist-sidebar" id="wishlist-drawer">
                 <div class="wishlist-header">
-                    <h3>My Saved Wishlist 🎄</h3>
+                    <h3>Saved Wishlist ✨</h3>
                     <button class="btn-close-wishlist" id="btn-close-wishlist" aria-label="Close Wishlist">&times;</button>
                 </div>
                 <div class="wishlist-items-container" id="wishlist-items">
@@ -184,7 +209,7 @@
 
         <!-- Main Footer -->
         <footer class="main-footer">
-            <p>&copy; 2026 MerryGift Finder. Helping spread holiday joy thoughtfully.</p>
+            <p>&copy; 2026 GiftSpire Finder. Discovering thoughtful gifts for every celebration.</p>
             <p class="footer-subtext">All recommendations are curated independently. Links point to public marketplaces for shopping convenience.</p>
         </footer>
     </div>

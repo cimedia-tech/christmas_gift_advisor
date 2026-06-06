@@ -1,32 +1,33 @@
-// --- Falling Snowflakes Generator ---
-function createSnowflakes() {
-    const container = document.getElementById('snowflake-container');
+// --- Sparkling Particles Generator ---
+function createParticles() {
+    const container = document.getElementById('particles-container');
     if (!container) return;
-    const flakeCount = 50;
+    const particleCount = 40;
 
-    for (let i = 0; i < flakeCount; i++) {
-        const flake = document.createElement('div');
-        flake.classList.add('snowflake');
+    for (let i = 0; i < particleCount; i++) {
+        const p = document.createElement('div');
+        p.classList.add('particle');
         
-        // Randomize snowflake styles
-        const size = Math.random() * 4 + 2; // 2px to 6px
+        // Randomize particle styles
+        const size = Math.random() * 5 + 2; // 2px to 7px
         const left = Math.random() * 100; // 0% to 100%
-        const duration = Math.random() * 10 + 6; // 6s to 16s
-        const delay = Math.random() * -10; // negative delay to avoid starting all at once
-        const opacity = Math.random() * 0.6 + 0.3;
+        const duration = Math.random() * 8 + 8; // 8s to 16s
+        const delay = Math.random() * -10;
+        const opacity = Math.random() * 0.4 + 0.2;
 
-        flake.style.width = `${size}px`;
-        flake.style.height = `${size}px`;
-        flake.style.left = `${left}%`;
-        flake.style.animationDuration = `${duration}s`;
-        flake.style.animationDelay = `${delay}s`;
-        flake.style.opacity = opacity;
+        p.style.width = `${size}px`;
+        p.style.height = `${size}px`;
+        p.style.left = `${left}%`;
+        p.style.animationDuration = `${duration}s`;
+        p.style.animationDelay = `${delay}s`;
+        p.style.opacity = opacity;
 
-        container.appendChild(flake);
+        container.appendChild(p);
     }
 }
 
 // --- Gift Database ---
+// Occasions map: 'birthday', 'anniversary', 'holiday', 'graduation', 'housewarming', 'generic'
 const giftDatabase = [
     {
         id: "gt-01",
@@ -34,6 +35,7 @@ const giftDatabase = [
         desc: "Preloaded with classic games. Compact, nostalgic, and perfect for gaming on the go.",
         price: "$45",
         recipients: ["partner", "friend", "child"],
+        occasions: ["birthday", "holiday", "generic"],
         interests: ["tech"],
         tones: ["funny", "practical"],
         budget: "moderate"
@@ -44,6 +46,7 @@ const giftDatabase = [
         desc: "Digitize handwritten notes to cloud services while offering a classic pen-and-paper writing experience.",
         price: "$30",
         recipients: ["partner", "parent", "friend", "colleague"],
+        occasions: ["birthday", "graduation", "holiday", "generic"],
         interests: ["tech", "books"],
         tones: ["practical"],
         budget: "moderate"
@@ -54,6 +57,7 @@ const giftDatabase = [
         desc: "Premium active noise cancellation, custom audio tunings, and ultra-comfortable earcups.",
         price: "$220",
         recipients: ["partner", "friend", "colleague"],
+        occasions: ["birthday", "anniversary", "graduation", "holiday"],
         interests: ["tech"],
         tones: ["luxury", "practical"],
         budget: "luxury"
@@ -64,6 +68,7 @@ const giftDatabase = [
         desc: "Sleek wireless mechanical keyboard with customizable RGB backlights and tactile switches.",
         price: "$90",
         recipients: ["partner", "friend", "colleague"],
+        occasions: ["birthday", "holiday", "generic"],
         interests: ["tech"],
         tones: ["practical", "luxury"],
         budget: "premium"
@@ -74,6 +79,7 @@ const giftDatabase = [
         desc: "Custom engraved full-grain leather bookmark with a gold foil holiday imprint.",
         price: "$18",
         recipients: ["parent", "friend", "colleague"],
+        occasions: ["birthday", "holiday", "generic"],
         interests: ["books"],
         tones: ["heartfelt", "practical"],
         budget: "budget"
@@ -84,6 +90,7 @@ const giftDatabase = [
         desc: "Rechargeable, neck-worn amber reading light that prevents eye strain during late-night reads.",
         price: "$20",
         recipients: ["partner", "parent", "friend", "child"],
+        occasions: ["birthday", "holiday", "generic"],
         interests: ["books"],
         tones: ["practical"],
         budget: "budget"
@@ -94,6 +101,7 @@ const giftDatabase = [
         desc: "A curated monthly box delivering a new release book, specialty tea, and custom reading accessories.",
         price: "$110",
         recipients: ["partner", "parent", "friend"],
+        occasions: ["birthday", "anniversary", "holiday"],
         interests: ["books"],
         tones: ["luxury", "heartfelt"],
         budget: "premium"
@@ -104,6 +112,7 @@ const giftDatabase = [
         desc: "Handcrafted, ethically sourced wool scarf that offers unparalleled softness and winter warmth.",
         price: "$65",
         recipients: ["partner", "parent", "friend"],
+        occasions: ["birthday", "holiday", "generic"],
         interests: ["fashion"],
         tones: ["luxury", "heartfelt"],
         budget: "moderate"
@@ -114,16 +123,18 @@ const giftDatabase = [
         desc: "Sleek cardholder wallet crafted from premium full-grain Italian leather.",
         price: "$85",
         recipients: ["partner", "colleague", "friend"],
+        occasions: ["birthday", "graduation", "holiday"],
         interests: ["fashion"],
         tones: ["luxury", "practical"],
         budget: "premium"
     },
     {
         id: "gf-03",
-        name: "Novelty Holiday Sock Pack",
-        desc: "A pack of 5 ridiculously cozy, funny holiday socks featuring dancing gingerbread men and skiing penguins.",
+        name: "Novelty Socks Pack",
+        desc: "A pack of 5 ridiculously cozy, funny custom socks featuring whimsical sketches and patterns.",
         price: "$15",
         recipients: ["child", "friend", "colleague"],
+        occasions: ["birthday", "holiday", "generic"],
         interests: ["fashion"],
         tones: ["funny"],
         budget: "budget"
@@ -134,6 +145,7 @@ const giftDatabase = [
         desc: "Heavy-duty borosilicate glass coffee maker that brews smooth, low-acid cold brew right at home.",
         price: "$35",
         recipients: ["partner", "parent", "colleague", "friend"],
+        occasions: ["birthday", "housewarming", "holiday", "generic"],
         interests: ["cooking"],
         tones: ["practical"],
         budget: "moderate"
@@ -144,6 +156,7 @@ const giftDatabase = [
         desc: "Complete DIY kit with heirloom peppers, custom bottles, and gourmet spices to craft unique hot sauces.",
         price: "$40",
         recipients: ["partner", "friend", "colleague"],
+        occasions: ["birthday", "holiday", "generic"],
         interests: ["cooking"],
         tones: ["funny", "practical"],
         budget: "moderate"
@@ -151,9 +164,10 @@ const giftDatabase = [
     {
         id: "gc-03",
         name: "Signature Cast Iron Dutch Oven",
-        desc: "Enameled cast iron masterpiece for baking bread, simmering stews, and roasting savory holiday dinners.",
+        desc: "Enameled cast iron masterpiece for baking bread, simmering stews, and roasting savory dinners.",
         price: "$160",
         recipients: ["partner", "parent"],
+        occasions: ["birthday", "anniversary", "housewarming", "holiday"],
         interests: ["cooking"],
         tones: ["luxury", "practical"],
         budget: "luxury"
@@ -164,6 +178,7 @@ const giftDatabase = [
         desc: "Lightweight, parachute nylon camping hammock that fits easily into a compact travel pack.",
         price: "$55",
         recipients: ["partner", "friend", "child"],
+        occasions: ["birthday", "holiday", "generic"],
         interests: ["outdoor"],
         tones: ["practical", "funny"],
         budget: "moderate"
@@ -174,6 +189,7 @@ const giftDatabase = [
         desc: "Includes artisanal graham crackers, premium dark chocolates, and handmade marshmallows.",
         price: "$24",
         recipients: ["child", "friend", "parent"],
+        occasions: ["birthday", "holiday", "generic"],
         interests: ["outdoor", "cooking"],
         tones: ["heartfelt", "funny"],
         budget: "budget"
@@ -184,6 +200,7 @@ const giftDatabase = [
         desc: "Rugged, waterproof external power bank for charging smartphones during outdoor adventures.",
         price: "$45",
         recipients: ["partner", "friend", "colleague"],
+        occasions: ["birthday", "holiday", "generic"],
         interests: ["outdoor", "tech"],
         tones: ["practical"],
         budget: "moderate"
@@ -194,6 +211,7 @@ const giftDatabase = [
         desc: "Whisper-quiet ceramic ultrasonic diffuser with ambient wood grain finish and soft night lights.",
         price: "$38",
         recipients: ["partner", "parent", "friend", "colleague"],
+        occasions: ["birthday", "housewarming", "holiday", "generic"],
         interests: ["wellness"],
         tones: ["heartfelt", "practical"],
         budget: "moderate"
@@ -204,6 +222,7 @@ const giftDatabase = [
         desc: "Offers soothing sensory pressure to induce deeper sleep and relieve anxiety after long days.",
         price: "$80",
         recipients: ["partner", "parent", "friend"],
+        occasions: ["birthday", "holiday", "generic"],
         interests: ["wellness"],
         tones: ["heartfelt", "luxury"],
         budget: "premium"
@@ -214,6 +233,7 @@ const giftDatabase = [
         desc: "Beautiful wooden box filled with 48 premium herbal tea bags sourced from organic farms worldwide.",
         price: "$25",
         recipients: ["parent", "colleague", "friend"],
+        occasions: ["birthday", "holiday", "generic"],
         interests: ["wellness", "cooking"],
         tones: ["heartfelt", "practical"],
         budget: "moderate"
@@ -223,13 +243,14 @@ const giftDatabase = [
 // --- Application State ---
 const userSelections = {
     recipient: null,
+    occasion: null,
     interest: null,
     tone: null,
     budget: null
 };
 
 let currentStep = 1;
-const totalSteps = 4;
+const totalSteps = 5;
 let savedWishlist = JSON.parse(localStorage.getItem('merrygift_wishlist')) || [];
 
 // --- DOM References ---
@@ -255,7 +276,7 @@ const btnShareWishlist = document.getElementById('btn-share-wishlist');
 
 // --- Initialization ---
 document.addEventListener('DOMContentLoaded', () => {
-    createSnowflakes();
+    createParticles();
     setupEventListeners();
     updateWishlistUI();
 });
@@ -313,7 +334,7 @@ function setupEventListeners() {
     // Share Wishlist
     btnShareWishlist.addEventListener('click', () => {
         const wishlistNames = savedWishlist.map(item => `${item.name} (${item.price})`).join('\n');
-        const shareText = `Check out my Christmas Gift Wishlist generated on MerryGift:\n\n${wishlistNames}\n\nPlan yours at https://merrygift.vercel.app`;
+        const shareText = `Check out my Wishlist generated on GiftSpire:\n\n${wishlistNames}\n\nPlan yours at https://christmasgiftadvisor.vercel.app`;
         
         navigator.clipboard.writeText(shareText).then(() => {
             const oldText = btnShareWishlist.textContent;
@@ -373,6 +394,7 @@ function regressStep() {
 function restartWizard() {
     // Reset state
     userSelections.recipient = null;
+    userSelections.occasion = null;
     userSelections.interest = null;
     userSelections.tone = null;
     userSelections.budget = null;
@@ -386,7 +408,7 @@ function restartWizard() {
     document.getElementById(`step-1`).classList.add('active');
     
     stepCounter.textContent = `Step 1 of ${totalSteps}`;
-    progressIndicator.style.width = `25%`;
+    progressIndicator.style.width = `20%`;
     btnBack.setAttribute('disabled', 'true');
     
     // Switch views
@@ -404,8 +426,11 @@ function generateRecommendations() {
     
     // Filter logic
     const matchedGifts = giftDatabase.filter(gift => {
-        // Match Recipient (must match or be empty generic fallback)
+        // Match Recipient
         const recipientMatch = gift.recipients.includes(userSelections.recipient);
+        
+        // Match Occasion (supports generic or specific occasion match)
+        const occasionMatch = gift.occasions.includes(userSelections.occasion) || gift.occasions.includes('generic');
         
         // Match Interest
         const interestMatch = gift.interests.includes(userSelections.interest);
@@ -413,18 +438,12 @@ function generateRecommendations() {
         // Match Budget
         const budgetMatch = gift.budget === userSelections.budget;
         
-        // We evaluate weighted score
-        gift.matchScore = (recipientMatch ? 3 : 0) + (interestMatch ? 2 : 0) + (budgetMatch ? 1.5 : 0);
-        
-        // Include if score is above threshold or it matches interest
-        return interestMatch || (recipientMatch && budgetMatch);
+        // Include if it matches the main interests + has recipient/occasion affinity
+        return interestMatch || (recipientMatch && occasionMatch && budgetMatch);
     });
 
-    // Sort by match score
-    matchedGifts.sort((a, b) => b.matchScore - a.matchScore);
-    
-    // Display recommendations
-    renderRecommendations(matchedGifts.slice(0, 6)); // Show top 6 recommendations
+    // Render matches
+    renderRecommendations(matchedGifts.slice(0, 6));
 }
 
 function renderRecommendations(gifts) {
@@ -434,7 +453,7 @@ function renderRecommendations(gifts) {
         recommendationsGrid.innerHTML = `
             <div class="glass-card" style="grid-column: 1 / -1; text-align: center; padding: 40px;">
                 <p style="font-size: 1.1rem; color: var(--text-secondary); line-height: 1.6;">
-                    🎄 No direct matches found for that specific combination. However, the holiday spirit remains! Let's try starting over with slightly broader preferences.
+                    ✨ No direct matches found for that specific combination. Let's try starting over with slightly broader preferences.
                 </p>
             </div>
         `;
@@ -486,10 +505,7 @@ function toggleSaveGift(gift, buttonEl) {
 }
 
 function updateWishlistUI() {
-    // Update badge count
     wishlistCountBadge.textContent = savedWishlist.length;
-    
-    // Clear item containers
     wishlistItemsContainer.innerHTML = '';
     
     if (savedWishlist.length === 0) {
@@ -510,13 +526,11 @@ function updateWishlistUI() {
                 <button class="btn-remove-saved" data-id="${item.id}" aria-label="Remove item">&times;</button>
             `;
             
-            // Remove click handler
             itemEl.querySelector('.btn-remove-saved').addEventListener('click', () => {
                 savedWishlist = savedWishlist.filter(saved => saved.id !== item.id);
                 localStorage.setItem('merrygift_wishlist', JSON.stringify(savedWishlist));
                 updateWishlistUI();
                 
-                // Refresh stars in recommendations grid if currently visible
                 const starBtn = recommendationsGrid.querySelector(`.btn-save-gift[data-id="${item.id}"]`);
                 if (starBtn) {
                     starBtn.textContent = '☆';
